@@ -1,5 +1,7 @@
 # Deezer Solus build script
 
+![Deezer](https://preview.redd.it/us86nuehruc51.png?width=1920&format=png&auto=webp&s=ef48b4aa0c98a4d0e0d869282a10e93127f9e927)
+
 Unofficial script to install Deezer desktop on Solus. Based on [the AUR Script by SibrenVasse](https://aur.archlinux.org/packages/deezer/).
 
 For Windows, Deezer distributes a version of the Electron run time (Windows binary) and the source code of their application itself. The build process of this package extracts the application source from the Windows installer.
