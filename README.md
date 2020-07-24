@@ -1,6 +1,6 @@
-# Deezer Ubuntu build script
+# Deezer Solus build script
 
-Unofficial script to install Deezer desktop on Ubuntu. Based on [the AUR Script by SibrenVasse](https://aur.archlinux.org/packages/deezer/).
+Unofficial script to install Deezer desktop on Solus. Based on [the AUR Script by SibrenVasse](https://aur.archlinux.org/packages/deezer/).
 
 For Windows, Deezer distributes a version of the Electron run time (Windows binary) and the source code of their application itself. The build process of this package extracts the application source from the Windows installer.
 
@@ -12,7 +12,7 @@ This package applies several patches for:
 
 ## Building
 
-To install on Ubuntu:
+To install on Solus:
 
 ```bash
 git clone https://github.com/siphomateke/deezer
