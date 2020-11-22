@@ -17,7 +17,7 @@ This package applies several patches for:
 To install on Solus:
 
 ```bash
-git clone https://github.com/siphomateke/deezer
+git clone https://github.com/ressonix/deezer
 cd deezer
 chmod +x ./install.sh
 ./install.sh
