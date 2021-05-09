@@ -2,7 +2,7 @@
 
 # Maintainer: Michael Kinder <michael@hostbend.net>
 pkgname="deezer"
-pkgver=4.20.21
+pkgver=4.32.20 
 srcdir="$PWD"
 
 install_dependencies() {
@@ -47,7 +47,6 @@ prepare() {
     cd "$srcdir/resources/app"
 
     prettier --write "build/*.js"
-    prettier --write "build/assets/cache/js/route-naboo*ads*.js"
     # Disable menu bar
     patch -p1 < "$srcdir/menu-bar.patch"
     # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
