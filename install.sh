@@ -6,7 +6,7 @@ pkgver=4.32.20
 srcdir="$PWD"
 
 install_dependencies() {
-    sudo eopkg -y install p7zip imagemagick nodejs wget
+    sudo eopkg -y install p7zip imagemagick nodejs wget patch
     sudo npm install -g electron@^6 --unsafe-perm=true
     sudo npm install -g --engine-strict asar
     sudo npm install -g prettier
