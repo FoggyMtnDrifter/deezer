@@ -12,6 +12,14 @@ This package applies several patches for:
 - Compatibility with a Linux environment in general.
 - Fixing bugs
 
+## Options
+
+You can start Deezer minimized on the tray using the `--start-in-tray` flag;
+
+```bash
+deezer --start-in-tray
+```
+
 ## Building
 
 To install on Solus:
@@ -24,6 +32,26 @@ chmod +x ./install.sh
 ```
 
 The Deezer Windows installer will then be downloaded, extracted and patched to work for Linux. When prompted for your sudo password, please enter it.
+
+## Uninstalling
+
+You can uninstall Deezer by running `uninstall.sh`:
+
+```bash
+chmod +x ./uninstall.sh
+./uninstall.sh
+```
+
+## Updating
+
+```bash
+# Open the folder where you cloned this repo
+cd deezer
+# Pull the latest version
+git pull
+chmod +x ./install.sh
+./install.sh
+```
 
 ## Debugging
 

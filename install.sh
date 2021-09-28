@@ -2,12 +2,12 @@
 
 # Maintainer: Michael Kinder <michael@hostbend.net>
 pkgname="deezer"
-pkgver=4.32.20 
+pkgver=5.30.70
 srcdir="$PWD"
 
 install_dependencies() {
-    sudo eopkg -y install p7zip imagemagick nodejs wget patch
-    sudo npm install -g electron@^6 --unsafe-perm=true
+    sudo eopkg -y install p7zip imagemagick nodejs wget g++ make patch
+    sudo npm install -g electron@^13= --unsafe-perm=true
     sudo npm install -g --engine-strict asar
     sudo npm install -g prettier
 }
@@ -28,7 +28,6 @@ prepare() {
     asar extract app.asar app
 
     mkdir -p app/resources/linux/
-    cp win/systray.png app/resources/linux/systray.png
 
     # Remove NodeRT from package (-205.72 MiB)
     rm -r app/node_modules/@nodert
@@ -45,15 +44,14 @@ prepare() {
     done
 
     cd "$srcdir/resources/app"
+    mkdir -p resources/linux/
+    install -Dm644 "$srcdir/resources/win/systray.png" resources/linux/
 
     prettier --write "build/*.js"
-    # Disable menu bar
-    patch -p1 < "$srcdir/menu-bar.patch"
     # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
     patch -p1 < "$srcdir/quit.patch"
-
-    # Monkeypatch MPRIS D-Bus interface
-    patch -p1 < "$srcdir/0001-MPRIS-interface.patch"
+    # Add start in tray cli option (https://github.com/SibrenVasse/deezer/pull/12)
+    patch --forward --strip=1 --input="$srcdir/start-hidden-on-tray.patch"
 
     cd ..
     asar pack app app.asar
@@ -64,7 +62,7 @@ package() {
     sudo mkdir -p "$pkgdir"/usr/share/deezer
     sudo mkdir -p "$pkgdir"/usr/share/applications
     sudo mkdir -p "$pkgdir"/usr/bin/
-    for size in 16 32 48 64 128 256 512; do
+    for size in 16 32 48 64 128 256; do
         sudo mkdir -p "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/
     done
 
